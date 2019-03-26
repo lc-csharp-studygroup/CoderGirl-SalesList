@@ -47,5 +47,13 @@ namespace CoderGirl_SalesList
         /// <param name="salesRecords"></param>
         /// <returns></returns>
         List<SalesRecord> OrderByUnitsSoldDescending(List<SalesRecord> salesRecords);
+
+        /// <summary>
+        /// Returns true if there are any OrderDates before the cuttoff date, else returns false
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <param name="salesRecords"></param>
+        /// <returns></returns>
+        bool AreOrderDatesBefore(DateTime cutoffDate, List<SalesRecord> salesRecords);
     }
 }
