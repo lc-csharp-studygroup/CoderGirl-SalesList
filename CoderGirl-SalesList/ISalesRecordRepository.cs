@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CoderGirl_SalesList
 {
-    interface ISalesRecordRepository
+    public interface ISalesRecordRepository
     {
         List<SalesRecord> SalesRecords { get; set; }
 
