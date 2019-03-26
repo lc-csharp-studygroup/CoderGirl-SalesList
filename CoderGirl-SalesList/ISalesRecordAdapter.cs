@@ -7,8 +7,7 @@ namespace CoderGirl_SalesList
     public interface ISalesRecordAdapter
     {
         /// <summary>
-        /// Gets the file with a given path and attempts to parse the lines into a list of 
-        /// SalesRecord items
+        /// Gets the file with a given path and converts it into a list of SalesRecord items
         /// </summary>
         /// <param name="filePath">The path to the csv file</param>
         /// <param name="header">true if the file includes a header line, else false</param>
