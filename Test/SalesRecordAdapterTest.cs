@@ -40,9 +40,17 @@ namespace Test
 
         private bool ContainsMatchingData(string testLine, SalesRecord item)
         {
-            List<string> expectedData = testLine.Split(",").ToList();
-            List<string> recordData = item.GetType().GetProperties().Select(prop => prop.ToString()).ToList();
-            return !expectedData.Except(recordData).Any();
+            string[] expectedData = testLine.Split(",");
+            IEnumerable<string> itemProperties = item.GetPropertiesAsStrings();
+            IEnumerable<string> missingData = expectedData.Except(itemProperties);
+            return !missingData.Any();
+        }
+    }
+
+    static class TestExtensions {
+        public static IEnumerable<string> GetPropertiesAsStrings(this SalesRecord item)
+        {
+            return item.GetType().GetProperties().Select(prop => prop.ToString());
         }
     }
 }
