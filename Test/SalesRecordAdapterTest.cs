@@ -50,7 +50,17 @@ namespace Test
     static class TestExtensions {
         public static IEnumerable<string> GetPropertiesAsStrings(this SalesRecord item)
         {
-            return item.GetType().GetProperties().Select(prop => prop.ToString());
+            return item.GetType().GetProperties().Select(prop =>
+            {
+                object value = prop.GetValue(item);
+                if(value is DateTime)
+                {
+                    DateTime dateTime = (DateTime)value;
+                    string formattedDate = dateTime.Date.ToString("M/d/yyyy");
+                    return formattedDate;
+                }
+                return value.ToString();
+            });
         }
     }
 }
