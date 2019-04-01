@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using CoderGirl_SalesList;
 using Xunit;
@@ -88,6 +89,68 @@ namespace Test
             decimal actual = salesRecordAnalyzer.GetMaxProfit(salesRecords);
 
             Assert.Equal((decimal)17.2, actual);
+        }
+
+        [Fact]
+        public void TestGetTotalRevenue()
+        {
+            List<SalesRecord> salesRecords = new List<SalesRecord>
+            {
+                new SalesRecord{TotalRevenue = 17.2},
+                new SalesRecord{TotalRevenue = 17.0},
+                new SalesRecord{TotalRevenue = 0.0},
+                new SalesRecord{TotalRevenue = 17.1},
+                new SalesRecord{TotalRevenue = 10.0}
+            };
+
+            decimal actual = salesRecordAnalyzer.GetMaxProfit(salesRecords);
+
+            Assert.Equal((decimal)61.3, actual);
+        }
+
+        [Fact]
+        public void TestOrderByShipDate()
+        {
+            List<DateTime> expected = new List<DateTime>
+            {
+                DateTime.Parse("4/20/2013"),
+                DateTime.Parse("4/18/2014"),
+                DateTime.Parse("4/19/2014"),
+                DateTime.Parse("4/20/2014"),
+                DateTime.Parse("3/10/2019")
+            };
+            List<SalesRecord> salesRecords = new List<SalesRecord>
+            {
+                new SalesRecord{ShipDate = DateTime.Parse("4/19/2014")},
+                new SalesRecord{ShipDate = DateTime.Parse("4/18/2014")},
+                new SalesRecord{ShipDate = DateTime.Parse("4/20/2014")},
+                new SalesRecord{ShipDate = DateTime.Parse("4/20/2013")},
+                new SalesRecord{ShipDate = DateTime.Parse("3/10/2019")}
+            };
+
+            List<DateTime> actual = salesRecordAnalyzer.OrderByShipDate(salesRecords)
+                .Select(record => record.ShipDate).ToList();
+
+            Assert.True(expected.SequenceEqual(actual));
+        }
+
+        [Fact]
+        public void TestOrderByUnitsSoldDescending()
+        {
+            List<int> expected = new List<int> { 101, 101, 29, 12, 1 };
+            List<SalesRecord> salesRecords = new List<SalesRecord>
+            {
+                new SalesRecord{UnitsSold = 12},
+                new SalesRecord{UnitsSold = 29},
+                new SalesRecord{UnitsSold = 1},
+                new SalesRecord{UnitsSold = 101},
+                new SalesRecord{UnitsSold = 101}
+            };
+
+            List<int> actual = salesRecordAnalyzer.OrderByUnitsSoldDescending(salesRecords)
+                .Select(record => record.UnitsSold).ToList();
+
+            Assert.True(expected.SequenceEqual(actual));
         }
     }
 }
