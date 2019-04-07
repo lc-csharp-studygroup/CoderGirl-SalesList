@@ -71,7 +71,7 @@ namespace Test
 
             int actual = salesRecordAnalyzer.GetCountryCount(salesRecords);
 
-            Assert.Equal(4, actual);
+            Assert.Equal(3, actual);
         }
 
         [Fact]
@@ -103,7 +103,7 @@ namespace Test
                 new SalesRecord{TotalRevenue = 10.0}
             };
 
-            decimal actual = salesRecordAnalyzer.GetMaxProfit(salesRecords);
+            decimal actual = salesRecordAnalyzer.GetTotalRevenue(salesRecords);
 
             Assert.Equal((decimal)61.3, actual);
         }
