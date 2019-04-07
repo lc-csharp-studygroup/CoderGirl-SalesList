@@ -10,7 +10,7 @@ namespace CoderGirl_SalesList
         public string SalesChannel { get; set; }
         public string OrderPriority { get; set; }
         public DateTime OrderDate { get; set; }
-        public decimal TotalProfit { get; internal set; }
+        public decimal TotalProfit { get; set; }
         //TODO: Add the other properties
     }
 }
