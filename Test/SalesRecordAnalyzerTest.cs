@@ -79,11 +79,11 @@ namespace Test
         {
             List<SalesRecord> salesRecords = new List<SalesRecord>
             {
-                new SalesRecord{TotalProfit = 17.2},
-                new SalesRecord{TotalProfit = 17.0},
-                new SalesRecord{TotalProfit = 0.0},
-                new SalesRecord{TotalProfit = 17.1},
-                new SalesRecord{TotalProfit = 10.0}
+                new SalesRecord{TotalProfit = 17.2m},
+                new SalesRecord{TotalProfit = 17.0m},
+                new SalesRecord{TotalProfit = 0.0m},
+                new SalesRecord{TotalProfit = 17.1m},
+                new SalesRecord{TotalProfit = 10.0m}
             };
 
             decimal actual = salesRecordAnalyzer.GetMaxProfit(salesRecords);
@@ -96,11 +96,11 @@ namespace Test
         {
             List<SalesRecord> salesRecords = new List<SalesRecord>
             {
-                new SalesRecord{TotalRevenue = 17.2},
-                new SalesRecord{TotalRevenue = 17.0},
-                new SalesRecord{TotalRevenue = 0.0},
-                new SalesRecord{TotalRevenue = 17.1},
-                new SalesRecord{TotalRevenue = 10.0}
+                new SalesRecord{TotalRevenue = 17.2m},
+                new SalesRecord{TotalRevenue = 17.0m},
+                new SalesRecord{TotalRevenue = 0.0m},
+                new SalesRecord{TotalRevenue = 17.1m},
+                new SalesRecord{TotalRevenue = 10.0m}
             };
 
             decimal actual = salesRecordAnalyzer.GetTotalRevenue(salesRecords);
@@ -147,7 +147,7 @@ namespace Test
                 new SalesRecord{UnitsSold = 101}
             };
 
-            List<int> actual = salesRecordAnalyzer.OrderByUnitsSoldDescending(salesRecords)
+            List<SalesRecord> actual = salesRecordAnalyzer.OrderByUnitsSoldDescending(salesRecords)
                 .Select(record => record.UnitsSold).ToList();
 
             Assert.True(expected.SequenceEqual(actual));
