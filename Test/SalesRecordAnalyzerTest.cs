@@ -147,7 +147,7 @@ namespace Test
                 new SalesRecord{UnitsSold = 101}
             };
 
-            List<SalesRecord> actual = salesRecordAnalyzer.OrderByUnitsSoldDescending(salesRecords)
+            List<int> actual = salesRecordAnalyzer.OrderByUnitsSoldDescending(salesRecords)
                 .Select(record => record.UnitsSold).ToList();
 
             Assert.True(expected.SequenceEqual(actual));
