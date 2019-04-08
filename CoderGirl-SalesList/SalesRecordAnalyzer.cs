@@ -30,19 +30,19 @@ namespace CoderGirl_SalesList
             return salesRecords.Max(record => record.TotalProfit);
         }
 
-        //public decimal GetTotalRevenue(List<SalesRecord> salesRecords)
+        public decimal GetTotalRevenue(List<SalesRecord> salesRecords)
         {
-            //salesRecords.
+            return salesRecords.Sum(record => record.TotalRevenue);
         }
 
         public List<SalesRecord> OrderByShipDate(List<SalesRecord> salesRecords)
         {
-            throw new NotImplementedException();
+            return salesRecords.OrderBy(record => record.ShipDate).ToList();
         }
 
         public List<SalesRecord> OrderByUnitsSoldDescending(List<SalesRecord> salesRecords)
         {
-            throw new NotImplementedException();
+           return salesRecords.OrderByDescending(record => record.UnitsSold).ToList();
         }
     }
 }
