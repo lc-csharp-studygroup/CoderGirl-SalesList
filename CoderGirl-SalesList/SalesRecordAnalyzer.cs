@@ -27,12 +27,12 @@ namespace CoderGirl_SalesList
         public decimal GetMaxProfit(List<SalesRecord> salesRecords)
         {
 
-            throw new NotImplementedException();
+            return salesRecords.Max(record => record.TotalProfit);
         }
 
-        public decimal GetTotalRevenue(List<SalesRecord> salesRecords)
+        //public decimal GetTotalRevenue(List<SalesRecord> salesRecords)
         {
-            throw new NotImplementedException();
+            //salesRecords.
         }
 
         public List<SalesRecord> OrderByShipDate(List<SalesRecord> salesRecords)
