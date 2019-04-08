@@ -7,6 +7,8 @@ namespace CoderGirl_SalesList
 {
     public class SalesRecordAdapter : ISalesRecordAdapter
     {
+        public object Int { get; private set; }
+
         public List<SalesRecord> GetSalesRecordsFromCsvFile(string filePath)
         {
             List<SalesRecord> salesRecords = new List<SalesRecord>();
@@ -37,11 +39,12 @@ namespace CoderGirl_SalesList
             salesRecord.OrderDate = DateTime.Parse(properties[5]);
             salesRecord.OrderID = Double.Parse(properties[6]);
             salesRecord.ShipDate = DateTime.Parse(properties[7]);
-            salesRecord.UnitsSold = Double.Parse(properties[8]);
+            salesRecord.UnitsSold = int.Parse(properties[8]);
             salesRecord.UnitPrice = Decimal.Parse(properties[9]);
             salesRecord.UnitCost = Decimal.Parse(properties[10]);
             salesRecord.TotalRevenue = Decimal.Parse(properties[11]);
             salesRecord.TotalProfit = Decimal.Parse(properties[12]);
+            salesRecord.TotalCost = Decimal.Parse(properties[13]);
             return salesRecord;
         }
     }
